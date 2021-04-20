@@ -1,40 +1,49 @@
 package com.zxqnb;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Test {
-    private static int ans;
+class User implements Comparable {
+    int id;
+    int time;
+    int base;
 
-    private static boolean leastStep(int cur, int n, int step) {
-        if (cur > n) {
-            return false;
-        }
-        if (cur == n) {
-            ans = step;
-            return true;
-        }
-        if (leastStep(cur * 3, n, step + 1)) {
-            return true;
-        }
-        if (leastStep(cur * 2, n, step + 1)) {
-            return true;
-        }
-        return leastStep(cur + 1, n, step + 1);
+    User(int id, int time) {
+        this.id = id;
+        this.time = time;
+        this.base = time;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        User u = (User) o;
+        return Integer.compare(this.time, u.time);
+    }
+}
+
+public class Test {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int[] arr = new int[n];
+        int n = scanner.nextInt(), k = scanner.nextInt();
+        User[] arr = new User[n];
         for (int i = 0; i < n; i++) {
-            arr[i] = scanner.nextInt();
+            int time = scanner.nextInt();
+            arr[i] = new User(i + 1, time);
         }
-        for (int i = 0; i < n; i++) {
-            leastStep(1, arr[i], 1);
-            System.out.println(ans);
+        Arrays.sort(arr);
+        for (int i = 0; i < k; i++) {
+            System.out.println(arr[0].id);
+            arr[0].time += arr[0].base;
+            int j = 1;
+            while (j < n && arr[j].time < arr[0].time) {
+                j++;
+            }
+            User tmp = arr[0];
+            if (j - 1 >= 0) {
+                System.arraycopy(arr, 1, arr, 0, j - 1);
+            }
+            arr[j - 1] = tmp;
         }
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class T89 {
     public List<Integer> grayCode(int n) {
-        List<Integer> ans = new ArrayList<>() {{
+        List<Integer> ans = new ArrayList<Integer>() {{
             add(0);
         }};
         int head = 1;

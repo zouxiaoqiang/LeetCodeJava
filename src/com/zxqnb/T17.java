@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class T17 {
-    private List<ArrayList<Character>> m = new ArrayList<>() {
+    private List<ArrayList<Character>> m = new ArrayList<ArrayList<Character>>() {
         {
             add(new ArrayList<>());
             add(new ArrayList<>());

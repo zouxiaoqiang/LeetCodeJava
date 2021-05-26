@@ -1,4 +1,4 @@
-out
-.idea
+/out/
+/.idea/
+/src/com/zxqnb/Test.java
 LeetCodeJava.iml
-src/com/zxqnb/Test.java

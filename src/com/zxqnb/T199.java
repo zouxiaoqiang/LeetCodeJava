@@ -1,6 +1,5 @@
 package com.zxqnb;
 
-import com.sun.tools.jdeps.JdepsFilter;
 
 import java.util.*;
 
@@ -55,6 +54,7 @@ public class T199 {
                     ret.add(curNode.val);
                     visited = true;
                 }
+                assert curNode != null;
                 if (curNode.right != null) {
                     queue.offerLast(curNode.right);
                 }
